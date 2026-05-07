@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DrNs AI Director - Hospital Interface</title>
+<!-- Google Fonts: Manrope & Cairo for Arabic -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&amp;family=Cairo:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#191c1e",
+                        "primary-container": "#2c3e50",
+                        "on-primary-fixed-variant": "#36485b",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#334a55",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#c4c6cd",
+                        "on-primary-fixed": "#091d2e",
+                        "primary-fixed-dim": "#b5c8df",
+                        "on-secondary-fixed-variant": "#3b4951",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary-fixed": "#0f1d25",
+                        "on-surface-variant": "#43474c",
+                        "on-secondary-container": "#56656e",
+                        "surface-tint": "#4e6073",
+                        "on-error": "#ffffff",
+                        "tertiary": "#122a34",
+                        "surface": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "on-background": "#191c1e",
+                        "tertiary-fixed": "#cde6f4",
+                        "surface-container": "#eceef0",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-tertiary-container": "#93abb8",
+                        "tertiary-fixed-dim": "#b1cad7",
+                        "background": "#f7f9fb",
+                        "inverse-primary": "#b5c8df",
+                        "secondary-fixed": "#d6e5ef",
+                        "on-primary-container": "#96a9be",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d8dadc",
+                        "primary-fixed": "#d1e4fb",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#29404a",
+                        "inverse-surface": "#2d3133",
+                        "primary": "#162839",
+                        "on-tertiary-fixed": "#051e28",
+                        "secondary-container": "#d3e2ed",
+                        "secondary": "#526069",
+                        "surface-container-low": "#f2f4f6",
+                        "outline": "#74777d",
+                        "secondary-fixed-dim": "#bac9d3",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "12px",
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "stack-md": "24px",
+                        "margin": "40px",
+                        "section-gap": "80px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Cairo", "Manrope"],
+                        "headline-xl": ["Cairo", "Manrope"],
+                        "body-md": ["Cairo", "Manrope"],
+                        "body-lg": ["Cairo", "Manrope"],
+                        "label-md": ["Cairo", "Manrope"],
+                        "label-sm": ["Cairo", "Manrope"],
+                        "headline-lg": ["Cairo", "Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        /* Custom scrollbar for better appearance */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c4c6cd;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container-lowest shadow-[0_10px_30px_rgba(44,62,80,0.05)] h-24 flex items-center justify-between px-margin z-50 shrink-0">
+<div class="flex items-center gap-stack-md">
+<span class="text-headline-md font-headline-md font-bold text-primary">DrNs</span>
+<div class="h-8 w-px bg-outline-variant/30"></div>
+<span class="text-label-md font-label-md text-secondary uppercase tracking-widest">مساعدك الذكي</span>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl border border-outline-variant hover:bg-surface-container-low transition-colors duration-200">
+<span class="material-symbols-outlined text-primary">language</span>
+<span class="font-label-md text-primary">العربية</span>
+</button>
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-on-primary hover:bg-primary-container transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">restart_alt</span>
+<span class="font-label-md">ابدأ من جديد</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col md:flex-row overflow-hidden relative">
+<!-- Left Area: AI Personality & Context -->
+<section class="w-full md:w-[40%] p-margin flex flex-col justify-between bg-surface-container-low/50 overflow-y-auto">
+<div class="space-y-stack-md">
+<div class="inline-flex items-center px-4 py-2 bg-primary-fixed text-on-primary-fixed rounded-full mb-stack-md">
+<span class="material-symbols-outlined ml-2 text-sm" style="font-variation-settings: 'FILL' 1;">surfing</span>
+<span class="font-label-sm uppercase tracking-tighter">المساعد متاح الآن</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary max-w-md">إزيك النهاردة؟</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-sm">
+                    قولنا حاسس بإيه أو اختار من الزراير اللي على اليمين. أنا هوجهك للقسم الصح فوراً.
+                </p>
+<!-- Current Step / Chat History Visual -->
+<div class="mt-section-gap space-y-gutter">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-full bg-primary shrink-0 flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<div class="bg-white p-6 rounded-2xl rounded-tr-none shadow-sm border border-outline-variant/20 max-w-[80%]">
+<p class="font-body-md text-primary">أهلاً بيك في مركز DrNs الطبي. أنا المساعد الذكي المسؤول عن توجيهك. عشان نبدأ، يا ريت تختار المكان اللي حاسس فيه بتعب.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Anchor -->
+<div class="rounded-3xl overflow-hidden shadow-2xl relative group h-64 mt-stack-md shrink-0">
+<img alt="AI Director Visual" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uguyzwfA4_D1y7wkh4De1TzleDBAYRIqb7QhOZ5tmjsSFSzpLVb4tguDkFSQfCkEV0IDw5TZaEI0u_a43RR9N3PNhPtI2UjKTB-6zNrw_Vxq5MgdKaq7GdPixM6En7sIjoQh3rguWOra_4J76ML2RsbTH6vyKU3upydHv9eSTE0tZpngfA95B9rnDCyp0tsBD305hOpAeVzQw40iXIkFthWQjP0YPwa0lWmVVAro5EVvXvTVX1WFg8U9PMhuq8nRRjbaUZv4Iqrrxo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+</div>
+</section>
+<!-- Right Area: Interactive Controls -->
+<section class="flex-1 p-margin bg-surface overflow-y-auto custom-scrollbar">
+<div class="max-w-3xl mx-auto space-y-section-gap pb-40">
+<!-- Symptom Buttons Grid -->
+<div class="space-y-stack-md">
+<h2 class="font-headline-md text-headline-md text-primary mb-gutter">اختار اللي حاسس بيه بسرعة</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-gutter">
+<button class="flex items-center gap-6 p-8 bg-white rounded-3xl shadow-[0_10px_30px_rgba(44,62,80,0.05)] border border-transparent hover:border-primary/20 hover:shadow-md transition-all group text-right">
+<div class="w-16 h-16 rounded-2xl bg-error-container/30 flex items-center justify-center text-error group-hover:scale-110 transition-transform shrink-0">
+<span class="material-symbols-outlined !text-4xl" style="font-variation-settings: 'FILL' 1;">heart_broken</span>
+</div>
+<div>
+<span class="block font-headline-md text-primary">وجع في الصدر</span>
+<span class="text-label-md text-on-surface-variant">ضغط أو وجع شديد</span>
+</div>
+</button>
+<button class="flex items-center gap-6 p-8 bg-white rounded-3xl shadow-[0_10px_30px_rgba(44,62,80,0.05)] border border-transparent hover:border-primary/20 hover:shadow-md transition-all group text-right">
+<div class="w-16 h-16 rounded-2xl bg-secondary-container/30 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform shrink-0">
+<span class="material-symbols-outlined !text-4xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div>
+<span class="block font-headline-md text-primary">صداع</span>
+<span class="text-label-md text-on-surface-variant">دوخة أو صداع نصفي</span>
+</div>
+</button>
+<button class="flex items-center gap-6 p-8 bg-white rounded-3xl shadow-[0_10px_30px_rgba(44,62,80,0.05)] border border-transparent hover:border-primary/20 hover:shadow-md transition-all group text-right">
+<div class="w-16 h-16 rounded-2xl bg-primary-fixed/30 flex items-center justify-center text-primary group-hover:scale-110 transition-transform shrink-0">
+<span class="material-symbols-outlined !text-4xl" style="font-variation-settings: 'FILL' 1;">orthopedics</span>
+</div>
+<div>
+<span class="block font-headline-md text-primary">وجع عضم أو مفاصل</span>
+<span class="text-label-md text-on-surface-variant">كسور أو تيبس</span>
+</div>
+</button>
+<button class="flex items-center gap-6 p-8 bg-white rounded-3xl shadow-[0_10px_30px_rgba(44,62,80,0.05)] border border-transparent hover:border-primary/20 hover:shadow-md transition-all group text-right">
+<div class="w-16 h-16 rounded-2xl bg-tertiary-fixed/30 flex items-center justify-center text-tertiary group-hover:scale-110 transition-transform shrink-0">
+<span class="material-symbols-outlined !text-4xl" style="font-variation-settings: 'FILL' 1;">thermometer</span>
+</div>
+<div>
+<span class="block font-headline-md text-primary">برد وسخونية</span>
+<span class="text-label-md text-on-surface-variant">حرارة، كحة، أو رعشة</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Text Input Area -->
+<div class="space-y-stack-md">
+<label class="font-headline-md text-primary">أو اكتب اللي تعبك بطريقتك</label>
+<div class="relative group">
+<textarea class="w-full h-40 bg-white border-2 border-outline-variant/30 rounded-3xl p-8 font-body-lg focus:border-primary focus:ring-0 transition-all text-primary placeholder:text-on-surface-variant/40" placeholder="اكتب أعراضك هنا (مثلاً: 'عندي وجع جامد في رجلي الشمال بدأ من ساعتين...')"></textarea>
+<button class="absolute bottom-6 left-6 px-10 py-4 bg-primary text-on-primary rounded-2xl font-headline-md flex items-center gap-3 hover:shadow-lg active:scale-95 transition-all">
+                            إرسال 
+                            <span class="material-symbols-outlined rotate-180">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Department Recommendations Section -->
+<div class="space-y-stack-md">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-primary">توصيات الأقسام</h2>
+<span class="text-label-sm text-secondary uppercase tracking-widest bg-secondary-container/20 px-3 py-1 rounded">الحالة المباشرة</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-stack-sm">
+<div class="p-6 bg-white border border-outline-variant/20 rounded-2xl hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">stethoscope</span>
+<h3 class="font-label-md text-primary">باطنة</h3>
+<div class="mt-2 flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="text-label-sm text-secondary">انتظار 5 دقايق</span>
+</div>
+</div>
+<div class="p-6 bg-white border border-outline-variant/20 rounded-2xl hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">skeleton</span>
+<h3 class="font-label-md text-primary">عظام</h3>
+<div class="mt-2 flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+<span class="text-label-sm text-secondary">انتظار 15 دقيقة</span>
+</div>
+</div>
+<div class="p-6 bg-white border border-outline-variant/20 rounded-2xl hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-error text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">emergency</span>
+<h3 class="font-label-md text-primary">طوارئ</h3>
+<div class="mt-2 flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="text-label-sm text-secondary">فوراً</span>
+</div>
+</div>
+<div class="p-6 bg-white border border-outline-variant/20 rounded-2xl hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">pill</span>
+<h3 class="font-label-md text-primary">صيدلية</h3>
+<div class="mt-2 flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="text-label-sm text-secondary">دقيقتين</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommendation Card (Floating above main content but before technical footer) -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 w-[90%] max-w-container-max z-40 transform transition-transform translate-y-0">
+<div class="bg-primary-container text-white p-8 rounded-3xl shadow-2xl flex flex-col md:flex-row items-center justify-between gap-gutter border border-white/10 ring-8 ring-primary/5">
+<div class="flex items-center gap-6">
+<div class="w-20 h-20 rounded-full bg-on-primary-fixed-variant flex items-center justify-center animate-pulse shrink-0">
+<span class="material-symbols-outlined !text-4xl text-primary-fixed">directions</span>
+</div>
+<div>
+<span class="block text-label-md text-primary-fixed-dim uppercase tracking-[0.2em] mb-1">توجيه المساعد الذكي</span>
+<h2 class="text-headline-lg font-headline-lg">يا ريت تتوجه لقسم الباطنة، الدور التاني</h2>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="px-10 py-5 bg-on-primary text-primary-container rounded-2xl font-headline-md hover:bg-primary-fixed transition-colors whitespace-nowrap">
+                        اطبع الخريطة
+                    </button>
+<div class="text-left hidden md:block border-r border-white/10 pr-6 mr-6">
+<p class="text-label-sm opacity-60">وقت المشي التقريبي</p>
+<p class="text-headline-md font-bold text-primary-fixed-dim">3 دقايق</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Page Footer (Technical) -->
+<footer class="bg-primary shrink-0 z-50">
+<div class="px-margin h-16 flex items-center justify-between max-w-container-max mx-auto w-full">
+<span class="text-on-primary/70 font-label-sm">© 2024 أنظمة DrNs الطبية. جميع الحقوق محفوظة.</span>
+<div class="flex gap-stack-md">
+<a class="text-on-primary/70 hover:text-on-primary text-label-sm transition-all hover:underline" href="#">سياسة الخصوصية</a>
+<a class="text-on-primary/70 hover:text-on-primary text-label-sm transition-all hover:underline" href="#">الامتثال لقوانين حماية البيانات</a>
+</div>
+</div>
+</footer>
+</body></html>

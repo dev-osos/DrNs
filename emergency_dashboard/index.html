@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#56656e",
+                    "on-secondary-fixed-variant": "#3b4951",
+                    "on-tertiary-fixed-variant": "#334a55",
+                    "primary": "#162839",
+                    "on-tertiary-fixed": "#051e28",
+                    "secondary-fixed-dim": "#bac9d3",
+                    "surface-tint": "#4e6073",
+                    "surface-dim": "#d8dadc",
+                    "on-primary-container": "#96a9be",
+                    "secondary-container": "#d3e2ed",
+                    "tertiary-fixed": "#cde6f4",
+                    "inverse-surface": "#2d3133",
+                    "primary-fixed-dim": "#b5c8df",
+                    "on-primary-fixed-variant": "#36485b",
+                    "surface-container-high": "#e6e8ea",
+                    "outline-variant": "#c4c6cd",
+                    "on-primary": "#ffffff",
+                    "outline": "#74777d",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#091d2e",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#191c1e",
+                    "surface": "#f7f9fb",
+                    "surface-variant": "#e0e3e5",
+                    "background": "#f7f9fb",
+                    "surface-container": "#eceef0",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#d1e4fb",
+                    "secondary-fixed": "#d6e5ef",
+                    "surface-container-highest": "#e0e3e5",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-surface-variant": "#43474c",
+                    "primary-container": "#2c3e50",
+                    "tertiary": "#122a34",
+                    "inverse-primary": "#b5c8df",
+                    "on-tertiary-container": "#93abb8",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "secondary": "#526069",
+                    "tertiary-container": "#29404a",
+                    "on-background": "#191c1e",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-bright": "#f7f9fb",
+                    "on-secondary-fixed": "#0f1d25",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#b1cad7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "24px",
+                    "section-gap": "80px",
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "margin": "40px",
+                    "unit": "8px",
+                    "stack-sm": "12px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "label-md": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "body-md": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .emergency-glow {
+            box-shadow: 0 0 15px rgba(186, 26, 26, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full w-72 bg-surface dark:bg-surface-dim shadow-sm border-r border-outline-variant/30 flex flex-col py-stack-md z-50">
+<div class="px-6 mb-stack-md">
+<h1 class="text-headline-md font-headline-md font-black text-primary dark:text-primary-fixed">DrNs Portal</h1>
+<p class="font-body-md text-body-md text-secondary opacity-70">Clinical Excellence</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-secondary dark:text-on-secondary-container hover:bg-secondary-container/50 rounded-xl flex items-center px-4 py-3 mx-2 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="text-secondary dark:text-on-secondary-container hover:bg-secondary-container/50 rounded-xl flex items-center px-4 py-3 mx-2 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+<span class="font-body-md text-body-md">Patients</span>
+</a>
+<a class="text-secondary dark:text-on-secondary-container hover:bg-secondary-container/50 rounded-xl flex items-center px-4 py-3 mx-2 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">pill</span>
+<span class="font-body-md text-body-md">Prescriptions</span>
+</a>
+<a class="text-secondary dark:text-on-secondary-container hover:bg-secondary-container/50 rounded-xl flex items-center px-4 py-3 mx-2 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">inventory_2</span>
+<span class="font-body-md text-body-md">Inventory</span>
+</a>
+<a class="bg-primary-container text-on-primary-container rounded-xl flex items-center px-4 py-3 mx-2 opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">emergency</span>
+<span class="font-body-md text-body-md">Emergency Logs</span>
+</a>
+</nav>
+<div class="px-4 mb-stack-md">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-xl shadow-lg hover:opacity-90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                New Consultation
+            </button>
+</div>
+<div class="border-t border-outline-variant/30 pt-stack-md space-y-1">
+<a class="text-secondary dark:text-on-secondary-container hover:bg-secondary-container/50 rounded-xl flex items-center px-4 py-3 mx-2 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">help_outline</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+<a class="text-secondary dark:text-on-secondary-container hover:bg-secondary-container/50 rounded-xl flex items-center px-4 py-3 mx-2 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">archive</span>
+<span class="font-body-md text-body-md">Archive</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-72 flex flex-col min-h-screen">
+<!-- TopAppBar Shell -->
+<header class="bg-surface-container-lowest dark:bg-surface-container-lowest shadow-[0_10px_30px_rgba(44,62,80,0.05)] sticky top-0 z-40">
+<div class="flex justify-between items-center w-full px-margin h-20 max-w-container-max mx-auto">
+<div class="flex items-center gap-10">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">DrNs</span>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary pb-1 font-label-md text-label-md transition-colors" href="#">Consultants</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary pb-1 font-label-md text-label-md transition-colors" href="#">Pharmacy</a>
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">Emergency</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</button>
+</div>
+<div class="h-10 w-10 rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="User Profile" class="h-full w-full object-cover" data-alt="A professional headshot of a male doctor in a crisp white lab coat, wearing a stethoscope around his neck. The lighting is soft and clinical, set against a blurred medical facility background with cool blue tones, conveying expertise and trust in a modern healthcare environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDibCdKOsqKddQ7twO_PAtwXzQSOtViL_18sQLJcbiAWV7Rg_b_T032p8dL_iZCAVY5r7pZ6eLBZNGrr4FiLd9xyhIm0m8RS5FVfajd7UuRVHfduEdtqDJvqXPgOLKVUmU2HSpax-yCYv3xyNWSlbduokN_siOvVCLXsq0fRyg_Bxnqz4eKB03OsLIohdJqkrty8XsczAdFxwxr8bG10cwtcGB74T5ATLYy0J0Pbeqw3cS_jd6otZz0V6u8JI21AKDfAkaRXsYBU-Au"/>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md text-label-md hover:opacity-90 transition-all scale-[0.98] active:scale-[0.95]">
+                        Sign In
+                    </button>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<div class="flex-1 p-margin space-y-gutter">
+<!-- Hero Stats / Immediate Alerts -->
+<div class="grid grid-cols-12 gap-gutter">
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl p-8 shadow-[0_10px_30px_rgba(44,62,80,0.05)] border-l-4 border-error">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Live Emergency Feed</h2>
+<p class="font-body-md text-body-md text-secondary">3 High-priority cases active</p>
+</div>
+<span class="flex h-3 w-3 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-error"></span>
+</span>
+</div>
+<div class="space-y-4">
+<!-- Active Alert Item -->
+<div class="flex items-center justify-between p-4 bg-error-container/30 rounded-xl border border-error-container">
+<div class="flex items-center gap-4">
+<div class="bg-error text-on-error h-12 w-12 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">heart_broken</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-error-container">Cardiac Arrest - Unit 4B</h4>
+<p class="font-label-sm text-label-sm text-secondary">Patient: John Doe • ETA: 4m (Ambulance A12)</p>
+</div>
+</div>
+<button class="bg-error text-on-error px-4 py-2 rounded-lg font-label-sm text-label-sm uppercase tracking-wider">Deploy Triage</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container rounded-xl">
+<div class="flex items-center gap-4">
+<div class="bg-secondary text-on-secondary h-12 w-12 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">car_crash</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-primary">Trauma - Highway Junction</h4>
+<p class="font-label-sm text-label-sm text-secondary">Patient: Unknown • ETA: 12m (Ambulance B09)</p>
+</div>
+</div>
+<button class="text-primary border border-outline-variant px-4 py-2 rounded-lg font-label-sm text-label-sm hover:bg-surface-container-high transition-all">Assign Team</button>
+</div>
+</div>
+</div>
+<!-- Triage Capacity Bento -->
+<div class="col-span-12 lg:col-span-4 grid grid-rows-2 gap-gutter">
+<div class="bg-primary-container text-on-primary-container p-6 rounded-xl shadow-lg relative overflow-hidden">
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl opacity-10">local_hospital</span>
+<p class="font-label-sm text-label-sm uppercase tracking-widest opacity-70 mb-2">ER Occupancy</p>
+<h3 class="font-headline-xl text-headline-xl">84%</h3>
+<div class="w-full bg-white/20 h-2 rounded-full mt-4">
+<div class="bg-white h-2 rounded-full" style="width: 84%;"></div>
+</div>
+<p class="font-label-sm text-label-sm mt-4">4 beds available in Sector A</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_10px_30px_rgba(44,62,80,0.05)] flex items-center gap-4">
+<div class="h-16 w-16 rounded-2xl bg-tertiary-container flex items-center justify-center text-tertiary-fixed">
+<span class="material-symbols-outlined text-3xl">ambulance</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-secondary">Ambulances Active</p>
+<h3 class="font-headline-md text-headline-md text-primary">12 / 15</h3>
+</div>
+</div>
+</div>
+</div>
+<!-- Detailed Grid Section -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Ambulance Tracking Map (Mockup) -->
+<div class="col-span-12 xl:col-span-7 bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(44,62,80,0.05)] overflow-hidden">
+<div class="p-6 flex justify-between items-center border-b border-outline-variant/20">
+<h3 class="font-headline-md text-headline-md text-primary">Fleet Real-Time Tracking</h3>
+<div class="flex gap-2">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container text-label-sm text-secondary font-label-sm">
+<span class="h-2 w-2 rounded-full bg-green-500 mr-2"></span> Active
+                            </span>
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container text-label-sm text-secondary font-label-sm">
+<span class="h-2 w-2 rounded-full bg-error mr-2"></span> Responding
+                            </span>
+</div>
+</div>
+<div class="h-[400px] bg-surface-container relative">
+<img alt="Ambulance tracking map" class="w-full h-full object-cover grayscale opacity-60" data-alt="A sophisticated digital map interface showing a cityscape with multiple glowing pulse indicators representing emergency vehicles. The map uses a minimalist dark and light grey color scheme with thin, precise lines for streets. Small, stylized ambulance icons in bright medical red are scattered across the grid, leaving subtle motion trails behind them to indicate direction and speed." data-location="New York" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWgNrw2_fBoBf7kC3spYnU2wfa6JpW0-KdgXI1y5oFX9V44NGbvL55o7I4D4e_SerXNE9q4nitG0KueHLZUg9w1DRaOy1_Uk6Mrebh-JMGlC_Ai51GEeqFWfwpYv2locbz34xtibvlXIIINBzseG53thHP3wJsua4xQM8OrCQVVjVhtctlk3prf_JBQ4GPgDnAK5CX_d74lHj-kwhm0ljSfrengFcVDH3nfVRoOY7ZNVonLGEkVYE8gy6nB3m_yFDy0sZucPM8Kj67"/>
+<!-- Map Overlays -->
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-xl border border-outline-variant/30">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-error">navigation</span>
+<span class="font-label-md text-label-md font-bold">Closest Unit: B09</span>
+</div>
+<p class="font-label-sm text-label-sm text-secondary">3.2km from Main Entrance</p>
+</div>
+</div>
+</div>
+<!-- Immediate Triage Tools -->
+<div class="col-span-12 xl:col-span-5 flex flex-col gap-gutter">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_10px_30px_rgba(44,62,80,0.05)] flex-1">
+<h3 class="font-headline-md text-headline-md text-primary mb-6">Staff Readiness</h3>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">stethoscope</span>
+</div>
+<span class="font-body-md text-body-md text-primary">On-call Surgeons</span>
+</div>
+<span class="font-label-md text-label-md font-bold">04</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">vaccines</span>
+</div>
+<span class="font-body-md text-body-md text-primary">Triage Nurses</span>
+</div>
+<span class="font-label-md text-label-md font-bold">18</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">radiology</span>
+</div>
+<span class="font-body-md text-body-md text-primary">Radiology Techs</span>
+</div>
+<span class="font-label-md text-label-md font-bold">06</span>
+</div>
+</div>
+<button class="w-full mt-8 py-4 border border-outline border-dashed rounded-xl text-secondary font-label-md hover:bg-surface-container-low transition-all">
+                            Broadcast Emergency Page
+                        </button>
+</div>
+<div class="bg-tertiary text-on-tertiary p-8 rounded-xl shadow-lg">
+<div class="flex items-center gap-4 mb-4">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<h4 class="font-headline-md text-headline-md">Rapid Response Protocol</h4>
+</div>
+<p class="font-body-md text-body-md opacity-80 mb-6">Initiate code blue or mass casualty protocols instantly with one-touch activation for all departments.</p>
+<div class="grid grid-cols-2 gap-4">
+<button class="bg-error text-on-error py-3 rounded-lg font-label-sm uppercase font-bold tracking-widest">Code Blue</button>
+<button class="bg-tertiary-container text-tertiary-fixed py-3 rounded-lg font-label-sm uppercase font-bold tracking-widest">Trauma Team</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer-like List for Historical Context -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(44,62,80,0.05)] overflow-hidden">
+<div class="px-8 py-6 border-b border-outline-variant/20 flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-primary">Recent Incident History</h3>
+<button class="text-primary font-label-md flex items-center gap-1">
+                        View Detailed Archive <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<table class="w-full text-left">
+<thead class="bg-surface-container-low text-label-sm text-secondary font-label-sm">
+<tr>
+<th class="px-8 py-4 uppercase">Time</th>
+<th class="px-8 py-4 uppercase">Incident Type</th>
+<th class="px-8 py-4 uppercase">Assigned Unit</th>
+<th class="px-8 py-4 uppercase">Status</th>
+<th class="px-8 py-4 uppercase text-right">Details</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-low transition-all">
+<td class="px-8 py-5 font-label-md text-primary">09:42 AM</td>
+<td class="px-8 py-5 font-body-md">Severe Respiratory Distress</td>
+<td class="px-8 py-5 font-body-md">Ambulance A04</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">Admitted</span>
+</td>
+<td class="px-8 py-5 text-right">
+<span class="material-symbols-outlined text-secondary cursor-pointer">visibility</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-all">
+<td class="px-8 py-5 font-label-md text-primary">08:15 AM</td>
+<td class="px-8 py-5 font-body-md">Compound Fracture</td>
+<td class="px-8 py-5 font-body-md">Private Transport</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 rounded-full bg-tertiary-container text-tertiary-fixed font-label-sm text-label-sm">In Surgery</span>
+</td>
+<td class="px-8 py-5 text-right">
+<span class="material-symbols-outlined text-secondary cursor-pointer">visibility</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-all">
+<td class="px-8 py-5 font-label-md text-primary">07:58 AM</td>
+<td class="px-8 py-5 font-body-md">Pediatric Fever (Unstable)</td>
+<td class="px-8 py-5 font-body-md">Ambulance C12</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">Stabilized</span>
+</td>
+<td class="px-8 py-5 text-right">
+<span class="material-symbols-outlined text-secondary cursor-pointer">visibility</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- System Footer -->
+<footer class="w-full px-margin py-section-gap flex flex-col md:flex-row justify-between items-center gap-stack-md bg-primary dark:bg-primary-container mt-auto">
+<div class="flex flex-col md:items-start items-center gap-2">
+<span class="text-headline-md font-headline-md text-on-primary">DrNs</span>
+<p class="text-on-primary/70 font-body-md text-body-md">© 2024 DrNs Medical Systems. All Rights Reserved.</p>
+</div>
+<div class="flex gap-8 flex-wrap justify-center">
+<a class="text-on-primary/70 hover:text-on-primary font-label-sm text-label-sm hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="text-on-primary/70 hover:text-on-primary font-label-sm text-label-sm hover:underline transition-all" href="#">Terms of Service</a>
+<a class="text-on-primary/70 hover:text-on-primary font-label-sm text-label-sm hover:underline transition-all" href="#">HIPAA Compliance</a>
+<a class="text-on-primary/70 hover:text-on-primary font-label-sm text-label-sm hover:underline transition-all" href="#">Contact Security</a>
+</div>
+</footer>
+</main>
+</body></html>
