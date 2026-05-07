@@ -1,6 +1,6 @@
 #!/bin/bash
 # Script for Git Push (zsh/bash)
-# Pushes to origin (default: https://github.com/dev-osos/almoustafa-store.git)
+# Pushes to origin (default: https://github.com/dev-osos/DrNs.git)
 
 cd "$(dirname "$0")"
 
